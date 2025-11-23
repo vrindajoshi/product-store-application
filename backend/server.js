@@ -10,7 +10,10 @@ const app = express();
 
 app.use(express.json()); // middleware to parse JSON request bodies, allows us to accept JSON data
 
-app.use("/api/products", productRoutes)
+// use the product routes for any requests to /api/products
+app.use("/api/products", productRoutes);
+
+
 // postman desktop app can be used to test the endpoint
 
 app.listen(5000, () => {
