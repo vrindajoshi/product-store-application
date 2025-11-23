@@ -41,6 +41,16 @@ app.delete("/api/products/:id", async (req, res) => { // creates the /products/:
     }
 });
 
+app.get("/api/products", async (req, res) => {
+    try {
+        const products = await Product.find({});
+        res.status(200).json( {success: true, data: products} );
+    } catch (error) {
+        console.error("Error in Fetching Products", error.message);
+        res.status(500).json( {success: false, message: "Server Error"} );
+    }
+});
+
 // postman desktop app can be used to test the endpoint
 
 app.listen(5000, () => {
