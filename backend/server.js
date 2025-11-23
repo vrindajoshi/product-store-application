@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import Product from './models/product.model.js';
-import { mongo } from 'mongoose';
+import { mongoose } from 'mongoose';       
 
 dotenv.config();
 
@@ -59,8 +59,8 @@ app.put("/api/products/:id", async (req, res) => { // creates the /products/:id 
 
     const productUpdates = req.body; // gets the updated product data from the request body
 
-    if (!mongo.Types.ObjectId.isValid(id)) {
-        return  res.status(404).json( {success: false, message: "Invalid product ID"} ); // returns error if id is invalid
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json( {success: false, message: "Invalid product ID"} ); // returns error if id is invalid
     }
 
     try {
