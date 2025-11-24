@@ -11,13 +11,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
-app.use(express.json()); // middleware to parse JSON request bodies, allows us to accept JSON data
+app.use(express.json());
 
-// Serve frontend build in production
-if (process.env.NODE_ENV === "production") {  
+// API Routes (must come BEFORE frontend catch-all)
+app.use("/api/products", productRoutes);
+
+// Serve frontend in production
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-  app.get("*", (req, res) => {
+  app.get("/:catchAll(*)", (req, res) => {
     res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
   });
 } else {
@@ -26,15 +29,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-
-
-// use the product routes for any requests to /api/products
-app.use("/api/products", productRoutes);
-
-
-// postman desktop app can be used to test the endpoint
+// Ensure DB connects BEFORE listening
+connectDB();
 
 app.listen(PORT, () => {
-    connectDB();
-    console.log('Server is running on port '+ PORT);
+  console.log(`Server is running on port ${PORT}`);
 });
