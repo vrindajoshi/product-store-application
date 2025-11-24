@@ -9,7 +9,7 @@ const CreatePage = () => {
         image: ''
     }); 
 
-    const bgColor = useColorModeValue("white", "gray.700"); 
+    const bgColor = useColorModeValue("white", "gray.500"); 
 
     const toast = useToast();
 
