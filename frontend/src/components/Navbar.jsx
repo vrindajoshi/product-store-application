@@ -20,7 +20,7 @@ const Navbar = () => {
         >
 
         <Text
-            fonstSize={{ base: "22", sm: "28"}}
+            fontSize={{ base: "22", sm: "28"}}
             fontWeight={"bold"}
             textTransform={"uppercase"}
             textAlign={"center"}
@@ -32,12 +32,12 @@ const Navbar = () => {
         </Text>
         
         <HStack spacing={2} alignItems={"center"}>
-            <Link to="/">
+            <Link to="/create">
                 <Button> 
                     <CiSquarePlus /> 
                 </Button>
             </Link>
-            <Link to="/create">
+            <Link>
                 <Button onClick={toggleColorMode}>
                     {colorMode === "light" ? <MdOutlineLightMode /> : <MdLightMode />}
                 </Button>
