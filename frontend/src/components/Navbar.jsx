@@ -1,5 +1,4 @@
 import { Button, Container, Flex, HStack, Text, useColorMode} from "@chakra-ui/react";
-import { base } from "framer-motion/client";
 import { Link } from "react-router-dom";
 import { CiSquarePlus } from "react-icons/ci";
 import { MdOutlineLightMode, MdLightMode } from "react-icons/md";
@@ -8,7 +7,7 @@ import { MdOutlineLightMode, MdLightMode } from "react-icons/md";
 const Navbar = () => {
     const {colorMode, toggleColorMode} = useColorMode();
     
-    return <Container maxW={"1140px"} paddingx={4} >
+    return <Container maxW={"1140px"} px={4} >
         <Flex
             h={16}
             alignItems={"center"}
